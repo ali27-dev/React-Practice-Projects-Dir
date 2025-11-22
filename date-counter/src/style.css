@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto Mono", sans-serif;
+  color: #252525;
+  font-weight: 400;
+  width: 45%;
+  min-height: 100vh;
+  padding: 3.2rem;
+  padding-bottom: 6rem;
+}
+.App {
+  position: absolute;
+  right: 55rem;
+}
+.counter,
+.step {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  font-size: 1.4rem;
+  padding: 0.7rem 1rem;
+}
+p {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.date p {
+  margin-top: 3rem;
+  font-size: 2rem;
+}

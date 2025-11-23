@@ -40,3 +40,9 @@ p {
   margin-top: 3rem;
   font-size: 2rem;
 }
+.rest-btn {
+  font-size: 1.4rem;
+  padding: 0.7rem 1.3rem;
+  margin-top: 4rem;
+  margin-left: 9rem;
+}

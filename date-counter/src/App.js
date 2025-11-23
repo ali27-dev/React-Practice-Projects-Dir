@@ -9,81 +9,91 @@ export default function App() {
 }
 function Step() {
   const [step, setStep] = useState(1);
+  const [counter, setCounter] = useState(0);
 
-  const handlePlus = () => {
-    if (step >= 0 && step <= 100) {
-      setStep(step + 1);
-    }
-  };
-  const handleMinus = () => {
-    if (step <= 100 && step >= 1) {
-      setStep(step - 1);
-    }
+  const date = new Date();
+  date.setDate(date.getDate() + counter);
+
+  // const handlePlus = () => {
+  //   if (step >= 0 && step <= 100) {
+  //     setStep(step + 1);
+  //   }
+  // };
+  // const handleMinus = () => {
+  //   if (step <= 100 && step >= 1) {
+  //     setStep(step - 1);
+  //   }
+  // };
+
+  const handleRest = () => {
+    setStep(1);
+    setCounter(0);
   };
   return (
     <>
       <div className="step">
-        <button onClick={handleMinus}>-</button>
-        <p>step:{step}</p>
-        <button onClick={handlePlus}>+</button>
+        <input
+          type="range"
+          min={0}
+          max={10}
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+        <p>{step}</p>
       </div>
-      <Counter step={step} />
-    </>
-  );
-}
-// Logic
-function Counter({ step }) {
-  const [counter, setCounter] = useState(0);
-
-  const handlePlus = () => {
-    setCounter(counter + step);
-  };
-  const handleMinus = () => {
-    setCounter(counter - step);
-  };
-  return (
-    <>
+      {/* Counter */}
       <div className="counter">
-        <button onClick={handleMinus}>-</button>
-        <p>Counter:{counter}</p>
-        <button onClick={handlePlus}>+</button>
+        <button onClick={() => setCounter((c) => c - step)}>-</button>
+        <input
+          type="text"
+          value={counter}
+          onChange={(e) => setCounter(Number(e.target.value))}
+        />
+        <button onClick={() => setCounter((c) => c + step)}>+</button>
       </div>
-      <Dates counter={counter} />
-    </>
-  );
-}
-
-function Dates(props) {
-  // const [days, setDays] = useState([
-  //   "Sunday",
-  //   "Monday",
-  //   "Tuesday",
-  //   "Wednesday",
-  //   "Thursday",
-  //   "Friday",
-  //   "Saturday",
-  // ]);
-  const date = new Date();
-  date.setDate(date.getDate() + props.counter);
-  // const handleDays = () => {
-  //   setDays();
-  // };
-  // const dayOfWeek = days[currDay];
-  // const newDate = new Date().toLocaleDateString();
-  return (
-    <>
+      {/* Date */}
       <div className="date">
         <p>
           <span>
-            {props.counter === 0
+            {counter === 0
               ? "today is"
-              : props.counter > 0
-              ? `${props.counter} days from today is`
-              : `${props.counter} days ago was`}
+              : counter > 0
+              ? `${counter} days from today is`
+              : `${counter} days ago was`}
           </span>{" "}
           <span>{date.toDateString()}</span>{" "}
         </p>
       </div>
+      {counter !== 0 || step !== 1 ? (
+        <div>
+          <button className="rest-btn" onClick={handleRest}>
+            Rest
+          </button>
+        </div>
+      ) : null}
     </>
   );
 }
+// Logic
+// function Counter({ step }) {
+
+//   return (
+//     <>
+//       <div className="counter">
+
+//       </div>
+//       <Dates counter={counter} />
+//     </>
+//   );
+// }
+
+// function Dates(props) {
+//   return (
+//     <>
+//       <div className="date"></div>
+//       <button className="rest-btn" onClick={handleRest}>
+//         Rest
+//       </button>
+//     </>
+//   );
+// }

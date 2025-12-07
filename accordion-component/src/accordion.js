@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const faqs = [
   {
     title: "Where are these chairs assembled?",
@@ -16,8 +18,8 @@ const faqs = [
 function Acoordion() {
   return (
     <div className="accordion">
-      {faqs.map((faq) => (
-        <AccContainers faqObj={faq} />
+      {faqs.map((faq, i) => (
+        <AccContainers faqObj={faq} num={i} />
       ))}
     </div>
   );
@@ -25,13 +27,22 @@ function Acoordion() {
 
 export default Acoordion;
 
-function AccContainers({ faqObj }) {
+function AccContainers({ faqObj, num, text }) {
+  const [isOpen, SetIsOpen] = useState(false);
+
+  function handleOpenItem() {
+    SetIsOpen((item) => (item === false ? true : false));
+  }
   return (
-    <div className="item ">
-      <div className="content-box">
-        <h3 className="title">{faqObj.title}</h3>
-        <p className="text">{faqObj.text}</p>
-      </div>
+    <div
+      className={isOpen === false ? "item" : "open"}
+      onClick={handleOpenItem}
+    >
+      <p className="number">{num < 9 ? `0${num + 1}` : num + 1}</p>
+      <h3 className="title">{faqObj.title}</h3>
+      <p className="icon">{isOpen ? "-" : "+"}</p>
+
+      {isOpen && <div className="content-box ">{faqObj.text}</div>}
     </div>
   );
 }

@@ -34,10 +34,7 @@ function AccContainers({ faqObj, num, text }) {
     SetIsOpen((item) => (item === false ? true : false));
   }
   return (
-    <div
-      className={isOpen === false ? "item" : "open"}
-      onClick={handleOpenItem}
-    >
+    <div className={`item ${isOpen ? "open" : ""}`} onClick={handleOpenItem}>
       <p className="number">{num < 9 ? `0${num + 1}` : num + 1}</p>
       <h3 className="title">{faqObj.title}</h3>
       <p className="icon">{isOpen ? "-" : "+"}</p>

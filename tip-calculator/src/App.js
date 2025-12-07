@@ -1,4 +1,6 @@
 import Bill from "./Bill";
+import Button from "./Button";
+import Payment from "./Payment";
 import Service from "./Service";
 
 function App() {
@@ -6,6 +8,8 @@ function App() {
     <div className="App">
       <Bill />
       <Service />
+      <Payment />
+      <Button />
     </div>
   );
 }

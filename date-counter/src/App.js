@@ -41,7 +41,7 @@ function Step() {
         />
         <p>{step}</p>
       </div>
-      {/* Counter */}
+      {/* Counter */}{" "}
       <div className="counter">
         <button onClick={() => setCounter((c) => c - step)}>-</button>
         <input

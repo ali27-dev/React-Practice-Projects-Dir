@@ -42,7 +42,7 @@ const questions = [
   },
   {
     id: 3229,
-    question: "I'm Abid Ali",
+    question: "Who is Abid Ali",
     answer: "Ali27-dev",
   },
 ];
@@ -58,8 +58,8 @@ function FlashCards() {
       {questions.map((question) => (
         <div
           key={question.id}
-          className={question.id === selectedId ? "selected" : ""}
           onClick={() => handleClick(question.id)}
+          className={question.id === selectedId ? "selected" : ""}
         >
           <p>
             {question.id === selectedId ? question.answer : question.question}

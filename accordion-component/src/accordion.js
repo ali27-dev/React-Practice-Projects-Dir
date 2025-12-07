@@ -16,30 +16,53 @@ const faqs = [
 ];
 
 function Acoordion() {
+  const [currOpen, SetcurrOpen] = useState(null);
+
   return (
     <div className="accordion">
       {faqs.map((faq, i) => (
-        <AccContainers faqObj={faq} num={i} />
+        <AccContainers
+          currOpen={currOpen}
+          onCurrOpen={SetcurrOpen}
+          title={faq.title}
+          num={i}
+          key={faq.title}
+        >
+          {faq.text}
+        </AccContainers>
       ))}
+      <AccContainers
+        currOpen={currOpen}
+        onCurrOpen={SetcurrOpen}
+        title="Test 1"
+        num={23}
+        key="test 1"
+      >
+        <p>Allows React developers to:</p>
+        <ul>
+          <li>Break up UI into components</li>
+          <li>Make components reusuable</li>
+          <li>Place state efficiently</li>
+        </ul>
+      </AccContainers>
     </div>
   );
 }
 
 export default Acoordion;
 
-function AccContainers({ faqObj, num, text }) {
-  const [isOpen, SetIsOpen] = useState(false);
-
+function AccContainers({ title, num, currOpen, onCurrOpen, children }) {
+  const isOpen = num === currOpen;
   function handleOpenItem() {
-    SetIsOpen((item) => (item === false ? true : false));
+    onCurrOpen(isOpen ? null : num);
   }
   return (
     <div className={`item ${isOpen ? "open" : ""}`} onClick={handleOpenItem}>
       <p className="number">{num < 9 ? `0${num + 1}` : num + 1}</p>
-      <h3 className="title">{faqObj.title}</h3>
+      <h3 className="title">{title}</h3>
       <p className="icon">{isOpen ? "-" : "+"}</p>
 
-      {isOpen && <div className="content-box ">{faqObj.text}</div>}
+      {isOpen && <div className="content-box ">{children}</div>}
     </div>
   );
 }

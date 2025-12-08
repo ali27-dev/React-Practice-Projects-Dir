@@ -5,15 +5,19 @@ import Button from "./Button";
 import Payment from "./Payment";
 import Service from "./Service";
 function TipCalculator() {
-  const [isBill, setIsBill] = useState(0);
+  const [isBill, setIsBill] = useState("");
   const [serviceTip, setServiceTip] = useState(0);
+  const [serviceTip2, setServiceTip2] = useState(0);
 
   function handleBill(e) {
     setIsBill(Number(e.target.value));
   }
+
+  const tip = isBill * ((serviceTip + serviceTip2) / 2 / 100);
   function handleRestBtn() {
-    setIsBill(0);
+    setIsBill("");
     setServiceTip(0);
+    setServiceTip2(0);
   }
   return (
     <>
@@ -21,11 +25,15 @@ function TipCalculator() {
       <Service serviceTip={serviceTip} setServiceTip={setServiceTip}>
         How did you like the service?
       </Service>
-      <Service serviceTip={serviceTip} setServiceTip={setServiceTip}>
+      <Service serviceTip={serviceTip2} setServiceTip={setServiceTip2}>
         How did your friend like the service?
       </Service>
-      <Payment isBill={isBill} serviceTip={serviceTip} />
-      <Button onRestBtn={handleRestBtn} />
+      {isBill && (
+        <>
+          <Payment isBill={isBill} serviceTip={serviceTip} tip={tip} />
+          <Button onRestBtn={handleRestBtn} />
+        </>
+      )}
     </>
   );
 }

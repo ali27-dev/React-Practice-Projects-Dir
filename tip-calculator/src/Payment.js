@@ -1,4 +1,4 @@
-function Payment({ isBill, serviceTip, onChangeBill }) {
+function Payment({ isBill, serviceTip, tip, onChangeBill }) {
   console.log(isBill);
 
   const totalBill = isBill + serviceTip;
@@ -9,7 +9,7 @@ function Payment({ isBill, serviceTip, onChangeBill }) {
   return (
     <div className="" style={{ fontWeight: "bold" }}>
       <p>
-        you pay ${totalBill} ($ {isBill} + ${serviceTip}tip)
+        you pay ${totalBill} ($ {isBill} + ${tip} tip)
       </p>
     </div>
   );

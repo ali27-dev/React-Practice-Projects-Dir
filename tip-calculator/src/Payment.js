@@ -1,7 +1,9 @@
-function Payment() {
+function Payment({ isBill, onChangeBill }) {
+  console.log(isBill);
+
   return (
     <div className="">
-      <p>you pay $92 ($80 + $12 tip)</p>
+      <p>you pay $92 ($ {isBill} + $12 tip)</p>
     </div>
   );
 }

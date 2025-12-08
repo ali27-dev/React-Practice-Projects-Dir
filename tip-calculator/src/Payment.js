@@ -1,15 +1,15 @@
-function Payment({ isBill, tipService, onChangeBill }) {
+function Payment({ isBill, serviceTip, onChangeBill }) {
   console.log(isBill);
 
-  const totalBill = isBill + tipService;
+  const totalBill = isBill + serviceTip;
 
   // function totalBill() {
-  //   isBill + tipService
+  //   isBill + serviceTip
   // }
   return (
-    <div className="">
+    <div className="" style={{ fontWeight: "bold" }}>
       <p>
-        you pay ${totalBill} ($ {isBill} + ${tipService}tip)
+        you pay ${totalBill} ($ {isBill} + ${serviceTip}tip)
       </p>
     </div>
   );

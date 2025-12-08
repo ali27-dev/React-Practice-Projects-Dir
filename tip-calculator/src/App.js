@@ -1,9 +1,9 @@
-import Bill from "./Bill";
+import TipCalculator from "./TipCalculator";
 
 function App() {
   return (
     <div className="App">
-      <Bill />
+      <TipCalculator />
     </div>
   );
 }

@@ -1,7 +1,7 @@
-function Button() {
+function Button({ onRestBtn }) {
   return (
     <div className="">
-      <button>Rest</button>
+      <button onClick={onRestBtn}>Rest</button>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import Service from "./Service";
 
 function Bill() {
   const [isBill, setIsBill] = useState(0);
+  const [tipService, setTipService] = useState(10);
   console.log(isBill);
 
   function handleBill(e) {
@@ -17,9 +18,9 @@ function Bill() {
         <span>How much the bill?</span>
         <input type="text" value={isBill} onChange={handleBill} />
       </div>
-      <Service />
-      <Payment isBill={isBill} />
-      <Button onChangeBill={handleBill} />
+      <Service tipService={tipService} />
+      <Payment isBill={isBill} tipService={tipService} />
+      <Button />
     </>
   );
 }
